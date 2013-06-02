@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AddressListActivity</string>
+    <string name="app_name">List Item CustomView Demo</string>
+    <string name="unidentified">[unnamed contact]</string>
 </resources>
