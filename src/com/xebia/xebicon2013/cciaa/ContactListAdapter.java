@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-/**
- *
- */
 public class ContactListAdapter extends BaseAdapter {
 
     private final Contact[] contacts;
@@ -22,36 +19,36 @@ public class ContactListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.list_item, null);
-        }
-        Contact item = getItem(position);
-        String name = item.getName();
-        String email = item.getEmail();
-        String address = item.getAddressLines();
-        TextView nameView = (TextView) convertView.findViewById(R.id.contact_name);
-        TextView emailView = (TextView) convertView.findViewById(R.id.contact_email);
-        TextView addressView = (TextView) convertView.findViewById(R.id.contact_address);
-        if (name != null) {
-            nameView.setText(name);
-        } else if (email != null) {
-            nameView.setText(email);
+        final Contact item = getItem(position);
+        final View view = (convertView == null)
+            ? inflater.inflate(R.layout.list_item, null)
+            : convertView;
+
+        TextView nameView = ((TextView) view.findViewById(R.id.contact_name));
+        if (item.getName() != null) {
+            nameView.setText(item.getName());
+        } else if (item.getEmail() != null) {
+            nameView.setText(item.getEmail());
         } else {
             nameView.setText(R.string.unidentified);
         }
-        if (email != null) {
-            emailView.setText(email);
-            emailView.setVisibility(name == null ? View.GONE : View.VISIBLE);
+
+        TextView emailView = (TextView) view.findViewById(R.id.contact_email);
+        if (item.getEmail() != null) {
+            emailView.setText(item.getEmail());
+            emailView.setVisibility(item.getName() == null ? View.GONE : View.VISIBLE);
         } else {
             emailView.setVisibility(View.GONE);
         }
-        if (address != null) {
-            addressView.setText(address);
+
+        TextView addressView = (TextView) view.findViewById(R.id.contact_address);
+        if (item.getAddressLines() != null) {
+            addressView.setText(item.getAddressLines());
             addressView.setVisibility(View.VISIBLE);
         } else {
             addressView.setVisibility(View.GONE);
         }
-        return convertView;
+        return view;
     }
 
     @Override
