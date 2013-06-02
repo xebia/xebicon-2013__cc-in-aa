@@ -21,38 +21,15 @@ public class ContactListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        ContactView view;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.list_item, null);
-            holder = new ViewHolder(convertView);
-            convertView.setTag(holder);
+            view = (ContactView) inflater.inflate(R.layout.list_item, null);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            view = (ContactView) convertView;
         }
         Contact item = getItem(position);
-        String name = item.getName();
-        String email = item.getEmail();
-        String address = item.getAddressLines();
-        if (name != null) {
-            holder.nameView.setText(name);
-        } else if (email != null) {
-            holder.nameView.setText(email);
-        } else {
-            holder.nameView.setText(R.string.unidentified);
-        }
-        if (email != null) {
-            holder.emailView.setText(email);
-            holder.emailView.setVisibility(name == null ? View.GONE : View.VISIBLE);
-        } else {
-            holder.emailView.setVisibility(View.GONE);
-        }
-        if (address != null) {
-            holder.addressView.setText(address);
-            holder.addressView.setVisibility(View.VISIBLE);
-        } else {
-            holder.addressView.setVisibility(View.GONE);
-        }
-        return convertView;
+        view.showContact(item);
+        return view;
     }
 
     @Override
