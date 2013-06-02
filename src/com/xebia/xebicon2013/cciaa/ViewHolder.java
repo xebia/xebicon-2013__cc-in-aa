@@ -12,5 +12,6 @@ public class ViewHolder {
         nameView = (TextView) listItem.findViewById(R.id.contact_name);
         emailView = (TextView) listItem.findViewById(R.id.contact_email);
         addressView = (TextView) listItem.findViewById(R.id.contact_address);
+        listItem.setTag( this );
     }
 }
