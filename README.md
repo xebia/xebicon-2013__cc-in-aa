@@ -1,3 +1,5 @@
+#### List Item Custom `ViewGroup` Example
+
 This is the code example to go with a subtopic of the [Clean Code in Android
 Apps][1] talk I gave at XebiCon 2013. It demonstrates why I recommend using a
 custom `ViewGroup` for your `ListView`'s child views.
@@ -16,17 +18,17 @@ It turns out that even these three simple rules make for a sizeable blot of
 code. This is not pretty code, but it's pretty unavoidable. Essential
 complexity.
 
-You should start by checking out the *`1-_naieve_adapter`* branch. This serves
+You should start by checking out the **1-_naieve_adapter** branch. This serves
 as the "bad" example, where all the conditional logic is right inside the
 `getView(..)` method. The `Adapter` class mixes the *View* and *Controller*
 responsibilities indiscriminately.
 
-The *`2-_ViewHolder_pattern`* branch demonstrates how using a `ViewHolder`
+The **2-_ViewHolder_pattern** branch demonstrates how using a `ViewHolder`
 doesn't really change anything. It's a performance optimization to avoid
 unnecessary calls of `findViewById(int)`, but the adapter class still mixes
 responsibilities and `getView(..)` is still a mess.
 
-Finally, the *`3-_custom_ViewGroup`* branch shows the approach I advocate. It
+Finally, the **3-_custom_ViewGroup** branch shows the approach I advocate. It
 has a number of benefits:
 
 * The `getView(..)` method is now very straight forward and the `Adapter` class
