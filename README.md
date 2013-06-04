@@ -4,9 +4,9 @@ This is the code example to go with a subtopic of the [Clean Code in Android
 Apps][1] talk I gave at XebiCon 2013. It demonstrates why I recommend using a
 custom `ViewGroup` for your `ListView`'s child views.
 
-The app itself is a simple contacts list. It's implemented as a `ListView` with
-a single kind of child view. There's a little bit of conditional logic in the
-presentation of the list items:
+The app itself is a simple contacts list ([Screenshot][screenshot]). 
+It's implemented as a `ListView` with a single kind of child view. There's a
+little bit of conditional logic in the presentation of the list items:
 
 * The email and street address fields are not shown if they have no data.
 * If there's no name in the `Contact` record, the email address is shown in the
@@ -37,9 +37,11 @@ has a number of benefits:
 * The presentation rules for the list item are implemented within the new
   `ContactView` class.  It's no prettier, but it's isolated from all the other
   things and in the tightest scope it needs to be aware of.
-* A `ViewHolder` is not needed, the `View` references are cached implicitly.
+* A `ViewHolder` is not needed, the `View` references are cached directly in the
+  view class. The view's `tag` is not used.
 
 [1]: http://www.xebicon.nl/workshops/clean-code-in-android-apps
+[screenshot]: https://raw.github.com/xebia/xebicon-2013__cc-in-aa/master/Framed_Screenshot.png
 
 #### License
 
