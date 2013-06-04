@@ -39,10 +39,6 @@ public class ContactView extends LinearLayout {
 
     public void showContact(Contact contact) {
         this.contact = (contact != null ? contact : EMPTY);
-        update();
-    }
-
-    private void update() {
         String name = contact.getName();
         String email = contact.getEmail();
         String address = contact.getAddressLines();
