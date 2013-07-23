@@ -40,8 +40,12 @@ has a number of benefits:
 * A `ViewHolder` is not needed, the `View` references are cached directly in the
   view class. The view's `tag` is not used.
 
+For a detailed exploration of this issue, read [ViewHolder considered Harmful][vhh]
+on the Xebia blog.
+
 [1]: http://www.xebicon.nl/workshops/clean-code-in-android-apps
 [screenshot]: https://raw.github.com/xebia/xebicon-2013__cc-in-aa/master/Framed_Screenshot.png
+[vhh]: http://blog.xebia.com/2013/07/22/viewholder-considered-harmful/
 
 #### License
 
