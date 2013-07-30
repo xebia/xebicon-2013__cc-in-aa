@@ -28,7 +28,7 @@ doesn't really change anything. It's a performance optimization to avoid
 unnecessary calls of `findViewById(int)`, but the adapter class still mixes
 responsibilities and `getView(..)` is still a mess.
 
-Finally, the **3-_custom_ViewGroup** branch shows the approach I advocate. It
+The **3-_custom_ViewGroup** branch shows the approach I advocate. It
 has a number of benefits:
 
 * The `getView(..)` method is now very straight forward and the `Adapter` class
@@ -39,6 +39,12 @@ has a number of benefits:
   things and in the tightest scope it needs to be aware of.
 * A `ViewHolder` is not needed, the `View` references are cached directly in the
   view class. The view's `tag` is not used.
+
+Finally, the **4-_better_custom_ViewGroup** branch improves on the previous by
+using a `<merge/>` as the root element of the custom view's layout xml. This moves
+the coupling between the custom view class from XML (root tag) to Java code
+(`R`-reference). The adapter class no longer has to inflate XML, it can simply
+`new` up an instance of `ContactView`. This is even simpler to work with.
 
 For a detailed exploration of this issue, read [ViewHolder considered Harmful][vhh]
 on the Xebia blog.
