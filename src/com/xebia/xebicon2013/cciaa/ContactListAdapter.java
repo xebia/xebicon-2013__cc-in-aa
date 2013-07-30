@@ -1,7 +1,6 @@
 package com.xebia.xebicon2013.cciaa;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,18 +11,18 @@ import android.widget.BaseAdapter;
 public class ContactListAdapter extends BaseAdapter {
 
     private final Contact[] contacts;
-    private final LayoutInflater inflater;
+    private final Context context;
 
     public ContactListAdapter(Context context, Contact[] contacts) {
         this.contacts = contacts;
-        this.inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ContactView view;
         if (convertView == null) {
-            view = (ContactView) inflater.inflate(R.layout.list_item, null);
+            view = new ContactView(context);
         } else {
             view = (ContactView) convertView;
         }

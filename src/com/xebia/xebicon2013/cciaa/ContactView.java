@@ -2,6 +2,7 @@ package com.xebia.xebicon2013.cciaa;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,21 +18,24 @@ public class ContactView extends LinearLayout {
     /** Inherited constructor. */
     public ContactView(Context context) {
         super(context);
+        init(context);
     }
 
     /** Inherited constructor. */
     public ContactView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
     }
 
     /** Inherited constructor. */
     public ContactView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init(context);
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
+    private void init(Context context) {
+        setOrientation(VERTICAL);
+        LayoutInflater.from(context).inflate(R.layout.contact_view, this, true);
         nameView = (TextView) findViewById(R.id.contact_name);
         emailView = (TextView) findViewById(R.id.contact_email);
         addressView = (TextView) findViewById(R.id.contact_address);
